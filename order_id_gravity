@@ -1,0 +1,16 @@
+add_action( 'woocommerce_checkout_order_processed', 'wc_add_order_id' );
+function wc_add_order_id( $order_id ) {
+    $order = wc_get_order( $order_id );
+    foreach ( $order->get_items() as $item ){
+      $product_id = $item['product_id'];  
+      $meta_data = $item->get_formatted_meta_data();
+      $meta_data_items = $item->get_meta_data();
+      foreach ( $meta_data_items as $meta ) {
+        $entry_id = $meta->value['_gravity_form_linked_entry_id'];
+        $entry = GFAPI::get_entry( $entry_id );
+        $entry['1'] = $order_id ;
+        $result = GFAPI::update_entry( $entry );
+        return $result;
+       }
+    }
+}
