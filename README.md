@@ -1,5 +1,5 @@
 # woo_gravity_addons
-connecting Woocommerce details to Gravity Form entries
+Connecting Woocommerce details to Gravity Form entries
 
 This snippet will add the Woocommerce order id to the Gravity form that is linked to the order through the Gravity Forms Product Add On.  Place this code into the functions.php of a Wordpress child theme.
 
